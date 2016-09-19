@@ -32,7 +32,7 @@ db.once('open', function () {
 app.get('/api', function(req, res) {
 
   // This GET request will search for the latest clickCount
-  Articles.find({}).sort('-date').exec(function(err, doc){
+  articles.find({}).sort('date: -1').exec(function(err, doc){
 
            if(err){
              console.log(err);
