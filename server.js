@@ -46,22 +46,33 @@ app.get('/api', function(req, res) {
 
 app.post('/api/', function(req, res){
        var newArticle = new Articles(req.body);
-       //console.log(req.body);
-       console.log(req.body);
-     //   var clickID = req.body.clickID;
-     //   var clicks = parseInt(req.body.clicks);
+        console.log(req.body);
+        var title = req.body.title
+        var date = req.body.date;
+        var url = req.body.url;
 
        // Note how this route utilizes the findOneAndUpdate function to update the clickCount.
       newArticle.save(function(err, doc){
               if(err){
                 console.log(err);
               }
-
               else{
-                   res.send("Updated Click Count!");
+                   res.send(doc.id);
               }
        });
   });
+
+app.delete('/api/saved'/, function(req,res){
+  var url = req.param('url');
+  Article.find({"url": url}).remove().exec(function(err, data){
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.send("Deleted");
+    }
+  });
+});
 
 
 // Listener
