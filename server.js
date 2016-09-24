@@ -1,8 +1,9 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-
+// initialize database
 var mongoose = require('mongoose');
-var articles = require('./models/articles.js');
+// get aricles schema
+var Articles = require('./models/articles.js');
 
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -29,10 +30,10 @@ db.once('open', function () {
 //   res.sendFile('./public/index.html');
 // });
 
-app.get('/api', function(req, res) {
+app.get('/api/saved', function(req, res) {
 
   // This GET request will search for the latest clickCount
-  articles.find({}).sort('date: -1').exec(function(err, doc){
+  Articles.find({}).sort('date: -1').exec(function(err, doc){
 
            if(err){
              console.log(err);
@@ -44,12 +45,12 @@ app.get('/api', function(req, res) {
 });
 
 
-app.post('/api/', function(req, res){
+app.post('/api/saved', function(req, res){
        var newArticle = new Articles(req.body);
         console.log(req.body);
-        var title = req.body.title
-        var date = req.body.date;
-        var url = req.body.url;
+        // var title = req.body.title
+        // var date = req.body.date;
+        // var url = req.body.url;
 
        // Note how this route utilizes the findOneAndUpdate function to update the clickCount.
       newArticle.save(function(err, doc){
@@ -62,8 +63,8 @@ app.post('/api/', function(req, res){
        });
   });
 
-app.delete('/api/saved'/, function(req,res){
-  var url = req.param('url');
+app.delete('/api/saved/:url', function(req,res){
+  var url = req.param.url;
   Article.find({"url": url}).remove().exec(function(err, data){
     if(err){
       console.log(err);

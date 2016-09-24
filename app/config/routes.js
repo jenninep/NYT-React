@@ -6,8 +6,8 @@ var Route = Router.Route;
 var IndexRoute = Router.IndexRoute;
 
 var Main = require('../components/Main.js');
-var Search = require('../components/Search');
-var Saved = require('..components/Saved');
+var Search = require('../components/Children/Search');
+var Saved = require('../components/Children/Saved');
 
 
 

@@ -1,4 +1,4 @@
-const axios = rquire('axios');
+const axios = require('axios');
 
 const ApiKey = "1e3b1acedce6480384157b9fac9fe4e7";
 
@@ -26,7 +26,7 @@ const helpers = {
 
 	},
 	getSaved: function(){
-		return axios.get('/api')
+		return axios.get('/api/saved')
 			.then(function(response){
 				console.log(response.data);
 				return response.data;
@@ -34,7 +34,7 @@ const helpers = {
 	},
 	saveArticle: function(article, i){
 		console.log(article);
-		return axios.post('/api', article)
+		return axios.post('/api/saved', article)
 			.then(function(results){
 				return(results);
 			})

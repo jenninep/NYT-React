@@ -1,8 +1,8 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var Query = require('./grandChildren/query.js');
-var Results = require('./grandChildren/results.js');
+// var Query = require('./grandChildren/query.js');
+// var Results = require('./grandChildren/results.js');
 var Helpers = require('../utils/helpers.js');
 var Search = React.createClass({
   getInitialState: function(){
@@ -49,7 +49,7 @@ var Search = React.createClass({
           </div>
           <div className="panel-body">
             {/* {childrenWithProps} */}
-            <Query getArticles = {this.getArticles}/>
+            {/*<Query getArticles = {this.getArticles}/>*/}
           </div>
         </div>
         {/* <Results /> */}

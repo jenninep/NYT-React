@@ -1,7 +1,7 @@
 var React = require('react');
 
-var Saved = require('./children/saved.js');
-var Search = require('./children/search.js');
+var Saved = require('./Children/Saved.js');
+var Search = require('./Children/Search.js');
 var Helpers = require('./utils/helpers.js');
 
 var Main = React.createClass({
@@ -55,6 +55,7 @@ var Main = React.createClass({
       marginTop: '5px',
       marginBottom: '10px'
     }
+   
   return (
     <div className = "container">
       <div className="jumbotron" style = {jumboStyle}>
